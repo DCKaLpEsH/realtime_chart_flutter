@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:realtime_line_chart/screens/chart/bloc/opinion_price_bloc.dart';
+import 'package:realtime_line_chart/screens/widgets/chart_info_widget.dart';
+
 
 class ChartScreen extends StatelessWidget {
   ChartScreen({super.key});
@@ -46,14 +48,15 @@ class ChartScreen extends StatelessWidget {
                           child: Container(
                             width: 10000,
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 20),
+                              horizontal: 16,
+                              vertical: 20,
+                            ),
                             child: LineChart(
                               LineChartData(
                                 titlesData: FlTitlesData(
                                   topTitles: const AxisTitles(),
                                   rightTitles: const AxisTitles(),
                                   leftTitles: AxisTitles(
-
                                     sideTitles: SideTitles(
                                       showTitles: true,
                                       reservedSize: 40,
@@ -146,7 +149,8 @@ class ChartScreen extends StatelessWidget {
                                       return FlSpot(
                                         e.time.millisecondsSinceEpoch
                                             .toDouble(),
-                                        double.parse(e.price.toStringAsFixed(2)),
+                                        double.parse(
+                                            e.price.toStringAsFixed(2)),
                                       );
                                     }).toList(),
                                   ),
@@ -170,47 +174,7 @@ class ChartScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Center(
-                        child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Average Price'),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            SizedBox(
-                              height: 20,
-                              width: 40,
-                              child: ColoredBox(
-                                color: Color(0xFFFF3AF2),
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Price every 5 sec'),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            SizedBox(
-                              height: 20,
-                              width: 40,
-                              child: ColoredBox(
-                                color: Color(0xFF2196F3),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )),
+                    const ChartInfoWidget(),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
@@ -228,7 +192,7 @@ class ChartScreen extends StatelessWidget {
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     value: state.seconds,
                                     items: const [
                                       DropdownMenuItem(
