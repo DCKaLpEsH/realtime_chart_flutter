@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "200093430572",
+    "project_id": "realtime-line-chart",
+    "storage_bucket": "realtime-line-chart.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200093430572:android:6683c782fe6a650b063289",
+        "android_client_info": {
+          "package_name": "com.example.realtime_line_chart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrItz9Zl5zJr1boC9XkXmpvllgmvjSBRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
