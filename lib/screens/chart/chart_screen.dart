@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:realtime_line_chart/screens/chart/bloc/opinion_price_bloc.dart';
 
-
 class ChartScreen extends StatelessWidget {
   ChartScreen({super.key});
 
@@ -28,21 +27,14 @@ class ChartScreen extends StatelessWidget {
           child: BlocBuilder<OpinionPriceBloc, OpinionPriceState>(
             builder: (context, state) {
               if (state is OpinionPriceUpdated) {
-                print('TOTAL PRICES: ${state.prices.length}');
-                // final currentTime = DateTime.now();
-                // final threeHoursFromNow = currentTime.add(Duration(hours: 3));
-
-                // // Filter data to include only relevant time window
-                // final filteredPrices = state.prices.where((pricePoint) {
-                //   return pricePoint.time.isAfter(
-                //           currentTime.subtract(Duration(minutes: 1))) &&
-                //       pricePstate.averageoint.time.isBefore(threeHoursFromNow);
-                // }).toList();
-
                 return Column(
                   children: [
                     Expanded(
-                      child: Scrollbar(
+                      child: RawScrollbar(
+                        trackColor: const Color(0xFF211E34),
+                        thumbColor: Colors.white38,
+                        radius: const Radius.circular(10),
+                        thickness: 10,
                         trackVisibility: true,
                         thumbVisibility: true,
                         scrollbarOrientation: ScrollbarOrientation.bottom,
@@ -95,10 +87,12 @@ class ChartScreen extends StatelessWidget {
                                           (state.seconds.toDouble() / 60),
                                       getTitlesWidget:
                                           (double value, TitleMeta meta) {
-
-                                            if(value == state.prices.first.time.millisecondsSinceEpoch.toDouble()){
-                                              return Text('');
-                                            }
+                                        if (value ==
+                                            state.prices.first.time
+                                                .millisecondsSinceEpoch
+                                                .toDouble()) {
+                                          return Text('');
+                                        }
                                         final DateTime time =
                                             DateTime.fromMillisecondsSinceEpoch(
                                           value.toInt(),
@@ -159,7 +153,7 @@ class ChartScreen extends StatelessWidget {
                                       return FlSpot(
                                         e.time.millisecondsSinceEpoch
                                             .toDouble(),
-                                        e.price,
+                                        double.parse(e.price.toStringAsFixed(2)),
                                       );
                                     }).toList(),
                                   ),
@@ -183,6 +177,47 @@ class ChartScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const Center(
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Average Price'),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            SizedBox(
+                              height: 20,
+                              width: 40,
+                              child: ColoredBox(
+                                color: Color(0xFFFF3AF2),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Price every 5 sec'),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            SizedBox(
+                              height: 20,
+                              width: 40,
+                              child: ColoredBox(
+                                color: Color(0xFF2196F3),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
