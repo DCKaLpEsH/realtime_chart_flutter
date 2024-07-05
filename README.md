@@ -1,16 +1,17 @@
 # realtime_line_chart
 
-A new Flutter project.
+  
 
-## Getting Started
+Realtime Line chart price of an opinion.
 
-This project is a starting point for a Flutter application.
+  
 
-A few resources to get you started if this is your first Flutter project:
+## How to run the app?
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone project using: `git clone https://github.com/DCKaLpEsH/realtime_chart_flutter`
+2. Go to terminal and open the `realtime_chart_flutter` folder.
+3. Run `flutter pub get` to get dependencies of the application
+4. Select preferred platform. I suggest web, since there are some issues with the android version of the application.
+5. Wait for the application to load.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## You can also view the application on following URL: https://realtime-line-chart.web.app/
